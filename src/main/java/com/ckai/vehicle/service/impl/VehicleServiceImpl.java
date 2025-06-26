@@ -41,8 +41,6 @@ public class VehicleServiceImpl implements VehicleService {
 
 
 
-
-
     public PageResult pageQuery(VehiclePageQueryDTO vehiclePageQueryDTO ) {
         PageHelper.startPage(vehiclePageQueryDTO.getPage(), vehiclePageQueryDTO.getPageSize());
         Page<VehicleInfo> page = vehicleInfoMapper.pageQuery(vehiclePageQueryDTO);

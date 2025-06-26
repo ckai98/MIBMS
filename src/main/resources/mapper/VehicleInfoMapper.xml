@@ -5,11 +5,11 @@
 
     <select id="pageQuery" resultType="com.ckai.vehicle.domain.VehicleInfo">
         SELECT * FROM vehicle_info
-<!--        <where>-->
-<!--            <if test="name != null and name != ''">-->
-<!--                and name like concat('%',#{name},'%')-->
-<!--            </if>-->
-<!--        </where>-->
+        <!--        <where>-->
+        <!--            <if test="name != null and name != ''">-->
+        <!--                and name like concat('%',#{name},'%')-->
+        <!--            </if>-->
+        <!--        </where>-->
         ORDER BY create_time DESC
     </select>
 
