@@ -23,6 +23,11 @@ public class BatterySignalController {
         return Result.success();
     }
 
+    @GetMapping("/id/{id}")
+    public BatterySignals getById(@PathVariable Long id){
+        return batterySignalService.getById(id);
+    }
+
     //获取最近五分钟的所有信号记录
     @GetMapping("/{time}")
     public Result<List<BatterySignals>> getRecentSignalReports(@PathVariable Integer time) {

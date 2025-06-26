@@ -5,6 +5,7 @@ import com.ckai.vehicle.dto.BatterySignalDTO;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -15,4 +16,7 @@ public interface BatterySignalMapper {
     void insert(BatterySignals batterySignals);
 
     List<BatterySignals> getRecentSignalReports(@Param("since") LocalDateTime since);
+
+    @Select("select * from battery_signals where id = #{id}")
+    BatterySignals getById(Long id);
 }

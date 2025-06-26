@@ -9,4 +9,6 @@ public interface BatterySignalService {
     void save(BatterySignalDTO batterySignalDTO);
 
     List<BatterySignals> getRecentSignalReports(Integer time);
+
+    BatterySignals getById(Long id);
 }

@@ -1,5 +1,6 @@
 package com.ckai.common.job;
 
+import com.ckai.common.mq.Provider;
 import com.ckai.vehicle.domain.BatterySignals;
 import com.ckai.vehicle.dto.warning.WarningDTO;
 import com.ckai.vehicle.dto.warning.WarningJson;
@@ -25,6 +26,9 @@ public class SignalWarningTask {
     @Autowired
     private WarningService warningService;
 
+    @Autowired
+    private Provider provider;
+
 
     @Scheduled(cron = "0 */1 * * * ?")
     public void scanSignalDataAndSendWarning(){
@@ -43,8 +47,10 @@ public class SignalWarningTask {
             List<WarningDTO> warningDTOS = warningService.processWarnData(warningJsonList);
             // System.out.println(warningDTOS);
             for (WarningDTO warningDTO : warningDTOS){
-                if (warningDTO.getWarnLevel() > 0)
+                if (warningDTO.getWarnLevel() > 0) {
                     System.out.println(warningDTO);
+                    provider.sendMsg("warn", warningDTO);
+                }
             }
         }
 

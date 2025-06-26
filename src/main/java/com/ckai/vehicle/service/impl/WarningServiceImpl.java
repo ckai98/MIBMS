@@ -18,10 +18,7 @@ import java.util.List;
 @Service
 public class WarningServiceImpl implements WarningService {
 
-    @Autowired
-    private VehicleService vehicleService;
-    @Autowired
-    private WarningService warningService;
+
     @Autowired
     private VehicleInfoMapper vehicleInfoMapper;
     @Autowired
@@ -93,7 +90,7 @@ public class WarningServiceImpl implements WarningService {
         //定义flag double(5,2)
 
         double flag = x - i;
-        System.out.println("flag:"+flag);
+        // System.out.println("flag:"+flag);
         return warningRuleMapper.getLevel(batteryType,ruleId,flag);
 
     }
