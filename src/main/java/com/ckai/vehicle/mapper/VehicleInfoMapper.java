@@ -19,4 +19,7 @@ public interface VehicleInfoMapper {
     VehicleInfo getById(Long id);
 
     Page<VehicleInfo> pageQuery(VehiclePageQueryDTO vehiclePageQueryDTO);
+
+    @Select("select battery_type from vehicle_info where vid = #{carVid}")
+    Integer getBatteryTypeByVid(String carVid);
 }
